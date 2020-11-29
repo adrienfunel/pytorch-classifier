@@ -7,6 +7,8 @@ import torch.optim as optim
 from apps import imshow
 from network import Net
 
+PATH = './cifar_net.pth'
+
 transform = transforms.Compose(
     [transforms.ToTensor(),
      transforms.Normalize((0.5, 0.5, 0.5), (0.5, 0.5, 0.5))])
@@ -64,3 +66,5 @@ def main():
                 running_loss = 0.0
 
     print('Finished Training')
+
+    torch.save(net.state_dict(), PATH)
